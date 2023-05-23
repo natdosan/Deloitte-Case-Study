@@ -25,13 +25,13 @@ def get_bad_columns(filepath):
 
     bad_column_names = []
     # This gets all the column names for Stimulants
-    bad_column_names.append(column_names(128, 139, '../data/Data-Codebook.pdf'))
+    bad_column_names += column_names(128, 139, '../data/Data-Codebook.pdf')
     # This gets all the drugs from cocaine, crack, heroin, hallucinogens
-    bad_column_names.append(column_names(67, 92, '../data/Data-Codebook.pdf'))
+    bad_column_names += column_names(67, 92, '../data/Data-Codebook.pdf')
     # This gets all the drugs from pain relievers and tranquilizers
-    bad_column_names.append(column_names(102, 127, '../data/Data-Codebook.pdf'))
+    bad_column_names += column_names(102, 127, '../data/Data-Codebook.pdf')
     # This gets all the sedative columns
-    bad_column_names.append(column_names(140, 148, '../data/Data-Codebook.pdf'))
+    bad_column_names += column_names(140, 148, '../data/Data-Codebook.pdf')
     return bad_column_names
     
 if __name__ == '__main__':
