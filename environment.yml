@@ -1,0 +1,11 @@
+name: deloitte_drug_prevention
+channels:
+  - conda-forge
+dependencies:
+  - python=3.8
+  - pandas
+  - plotly
+  - scikit-learn
+  - xgboost
+  - dask
+  - numpy
