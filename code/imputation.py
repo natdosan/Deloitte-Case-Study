@@ -44,3 +44,19 @@ def impute_na_with_random(series):
     samples.index = series[mask].index
     series[mask] = samples
     return series
+
+def convert_numeric(df):
+    """
+    Convert all columns of DataFrame from object to int or float if possible.
+
+    Parameters
+    ----------
+    df : pandas DataFrame
+        Input DataFrame.
+
+    Returns
+    -------
+    pandas DataFrame : DataFrame with columns converted to numeric types.
+    """
+    df = df.apply(lambda series: pd.to_numeric(series, errors='coerce'))
+    return df
