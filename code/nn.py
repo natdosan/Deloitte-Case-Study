@@ -7,7 +7,17 @@ def create_model(categorical_vars, df):
     """
     Create a Neural Network to predict the "uses drugs" column
 
-    
+    Parameters
+    ----------
+    categorical_vars : list
+        List of names of the categorical variables.
+    df : pandas DataFrame 
+        df containing the categorical variables.
+
+    Returns
+    -------
+    model : keras.models.Model()
+        A compiled Keras model for our problem
     """
     inputs = []
     embeddings = []
