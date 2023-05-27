@@ -9,3 +9,7 @@ dependencies:
   - xgboost
   - dask
   - numpy
+  - PyPDF2
+  - tensorflow
+  - xgboost
+
