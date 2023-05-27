@@ -12,4 +12,6 @@ dependencies:
   - PyPDF2
   - tensorflow
   - xgboost
+  - dask
+  - keras
 
