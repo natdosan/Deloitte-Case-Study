@@ -109,24 +109,22 @@ def train_and_evaluate_model(model, X, y, model_name, features):
     -------
     None
     """
-    # Split the data
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-    # Fit the model
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
     model.fit(X_train, y_train)
 
     # Make predictions
     y_pred = model.predict(X_test)
 
-    # Print the confusion matrix
+    # Confusion matrix
     print("Confusion Matrix:")
     print(confusion_matrix(y_test, y_pred))
 
-    # Compute and print accuracy
+    # Accuracy
     accuracy = accuracy_score(y_test, y_pred)
     print("Accuracy: ", accuracy)
 
-    # Compute cross-validation scores
+    # Cross-validation Scores
     cv_scores = cross_val_score(model, X, y, cv=5)
     print("\nCross-validation scores:")
     print(cv_scores)
@@ -138,6 +136,11 @@ def train_and_evaluate_model(model, X, y, model_name, features):
         feature_importances = model.feature_importances_
         for feature, importance in zip(features, feature_importances):
             print(f"Feature: {feature}, Importance: {importance}")
+    # otherwise print coefficients
+    else:
+        coeffs = model.coef_
+        for feature, coeff in zip(coeffs, feature_importances):
+            print(f"Feature: {feature}, Coefficient: {coeff}")
 
     # Save model to a pickle file
     pickle.dump(model, open(f"{model_name}.pkl", "wb"))
