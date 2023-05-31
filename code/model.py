@@ -107,7 +107,7 @@ def train_and_evaluate_model(model, X, y, model_name, features):
 
     Returns
     -------
-    None
+    pandas DataFrame : feature importances
     """
 
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
@@ -136,11 +136,22 @@ def train_and_evaluate_model(model, X, y, model_name, features):
         feature_importances = model.feature_importances_
         for feature, importance in zip(features, feature_importances):
             print(f"Feature: {feature}, Importance: {importance}")
+
+        result = pd.DataFrame({'Feature' : features,
+                        'Importance' : feature_importances,
+                        }, columns=['Feature','Importance']).sort_values(by = 'Importance', ascending=False)
+
     # otherwise print coefficients
     else:
         coeffs = model.coef_
-        for feature, coeff in zip(coeffs, feature_importances):
+        for feature, coeff in zip(features, coeffs):
             print(f"Feature: {feature}, Coefficient: {coeff}")
+
+        result = pd.DataFrame({'Feature' : features,
+                        'Coefficient' : coeffs,
+                        }, columns=['Feature','Coefficient']).sort_values(by = 'Coefficient', ascending=False)
 
     # Save model to a pickle file
     pickle.dump(model, open(f"../models/{model_name}.pkl", "wb"))
+    
+    return result
