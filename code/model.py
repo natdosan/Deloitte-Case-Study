@@ -143,4 +143,4 @@ def train_and_evaluate_model(model, X, y, model_name, features):
             print(f"Feature: {feature}, Coefficient: {coeff}")
 
     # Save model to a pickle file
-    pickle.dump(model, open(f"{model_name}.pkl", "wb"))
+    pickle.dump(model, open(f"../models/{model_name}.pkl", "wb"))
