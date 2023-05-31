@@ -147,9 +147,10 @@ def train_and_evaluate_model(model, X, y, model_name, features):
         for feature, coeff in zip(features, coeffs):
             print(f"Feature: {feature}, Coefficient: {coeff}")
 
-        result = pd.DataFrame({'Feature' : features,
-                        'Coefficient' : coeffs,
-                        }, columns=['Feature','Coefficient']).sort_values(by = 'Coefficient', ascending=False)
+        #result = pd.DataFrame({'Feature' : features,
+        #                'Coefficient' : coeffs,
+        #                }, columns=['Feature','Coefficient']).sort_values(by = 'Coefficient', ascending=False)
+        result = coeffs
 
     # Save model to a pickle file
     pickle.dump(model, open(f"../models/{model_name}.pkl", "wb"))
