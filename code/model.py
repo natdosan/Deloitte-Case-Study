@@ -2,7 +2,7 @@ import pandas as pd
 import xgboost as xgb
 import pickle
 from sklearn.model_selection import train_test_split, cross_val_score
-from sklearn.metrics import confusion_matrix, accuracy_score
+from sklearn.metrics import confusion_matrix, accuracy_score, f1_score, precision_score, recall_score
 from sklearn.pipeline import Pipeline
 from xgboost import XGBClassifier
 
@@ -123,6 +123,14 @@ def train_and_evaluate_model(model, X, y, model_name, features):
     # Accuracy
     accuracy = accuracy_score(y_test, y_pred)
     print("Accuracy: ", accuracy)
+
+    # Precision, Recall, F1 score
+    precision = precision_score(y_test, y_pred)
+    recall = recall_score(y_test, y_pred)
+    f1 = f1_score(y_test, y_pred)
+    print("Precision: ", precision)
+    print("Recall: ", recall)
+    print("F1 Score: ", f1)
 
     # Cross-validation Scores
     cv_scores = cross_val_score(model, X, y, cv=5)
